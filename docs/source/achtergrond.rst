@@ -2,10 +2,10 @@
 
    <br />
 
-.. _achtergrond:
+.. _background:
 
-Achtergrond
-============
+Background
+===========
 
 Applicatie
 -----------

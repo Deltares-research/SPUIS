@@ -11,10 +11,6 @@ The documentation covers:
     - The theory and formulas on which SPUIS is based,
     - An overview of the Python subroutines of **SPUIS.
 
-De documentatie is opgedeeld in meerde secties. Eerst wordt de achtergrond beschreven van het model in :ref:`achtergrond`.
-Hierna wordt uitgelegd hoe het model geinstalleerd kan worden met de juiste benodigdheden in :ref:`installatie`.
-Daaropvolgend wordt in :ref:`gebruik` het gebruik van het model beschreven. In :ref:`code` wordt de code gedetailleerd beschreven.
-
 .. note::
 
    SPUIS is based on the Dutch word "Spuisluis", which is "sluice" of "sluice gate" in English.

@@ -1,7 +1,7 @@
 .. _code:
 
-Code uitleg
-============
+Overview of Python functions
+=============================
 Het kader om het SPUIS model heen is :py:func:`runSpuis`. Deze voert op basis van input vragen de ``SPUIS401.exe`` uit.
 Deze executable is gebaseerd op :py:func:`SPUIS401`.
 

@@ -1,20 +1,20 @@
 #!python
 
-#================== Hoofdprogramma SPUIS =========================
+#================== Main program SPUIS =========================
 #
-#     SPUIS, VERSIE 4.01
+#     SPUIS, VERSION 4.01
 #
-#     Doel: Berekening van de waterstanden en afvoeren in spuisluizen
+#     Aim: Calculations of water levels and discharges in sluices
 #     Waterloopkundig Laboratorium Delft
-#     Oorspr. auteur: E.A. van Kleef
+#     Author: E.A. van Kleef
 #
-#     Aanpassing en uitbreiding: A. Vrijburcht
+#     Adjustments and additions: A. Vrijburcht
 #     16 sept. 1994
 #
-#     Aanpassing en uitbreiding: M. Witteveen
+#     Adjustments and additions: M. Witteveen
 #     02 mrt. 1995
 #
-#     Vertaald naar Python: M. van der Eijk
+#     Conversion from Fortran to Python: M. van der Eijk
 #     jan. 2024
 #
 import os
@@ -23,7 +23,7 @@ import shutil
 import sys
 
 def spuis401():
-# ===================== DATASTRUCTUUR ================================
+# ===================== DATA STRUCTURE ================================
     sys.path.insert(2, os.getcwd()+'\\py')
     from py.BOVWST import bovwst
     from py.GETCOD import getcod

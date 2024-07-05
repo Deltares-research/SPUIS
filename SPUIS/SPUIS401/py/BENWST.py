@@ -2,10 +2,10 @@
 # TODO: CAN BE REDUCED TO ONE FUNCTION (BENWST, BOVWST, MINWSTt, REKNNR, REKNOP)
 def benwst(id, ws, debiet, bm, dn_des, prof_des):
     """
-    Berekend benedenwaterstand bij een critisch doorsnede
+    Computes downstream water level at a critical cross section
 
-    Resultaat:
-        float: Benedenstroom waterlevel.
+    Result:
+        float: downstream waterlevel
     """
     from BCKWTR import bckwtr
     ar = dn_des['ar']

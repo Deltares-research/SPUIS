@@ -2,7 +2,7 @@
 SPUIS documentation
 ===================================
 
-This is the documentation for **SPUIS**, a `Deltares <https://www.deltares.nl/>`_ tool to calculate discharge through or over hydraulic structures such as culverts and weirs. The tool calculates water levels and profile-averaged flow velocities. The tool is applicable for open channel flow as well as for culverts. Furthermore, several types of hydraulic structures can be included via subroutines. If a free surface is present, SPUIS is able to calculate the transition from subcritical to critical flow and vice versa. 
+This is the documentation for **SPUIS**, a `Deltares <https://www.deltares.nl/>`_ tool to calculate discharge through or over hydraulic structures such as culverts and weirs. The tool calculates water levels and profile-averaged flow velocities. The tool is applicable for open channel flow as well as for culverts. Furthermore, several types of hydraulic structures can be included via subroutines. If a free surface is present, SPUIS is able to calculate the transition from subcritical to supercritical flow and vice versa. 
 
 The documentation covers:
     - A description of the background and functionality of SPUIS,

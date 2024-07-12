@@ -370,7 +370,7 @@ def spuis401():
                 id = laatst
                 rchtng = opwrts
             else:
-                # Bereken benedenwaterstand WS(ID) met schietend water
+                # Bereken benedenwaterstand WS(ID-1) met schietend water
                 # (JFN=5) en maak ID=ID+1:
                 ws[id-1] = reknnr(id, ws, debiet, bm, dn_des, prof_des)
                 rg[id-1] = schtnd

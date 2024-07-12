@@ -76,7 +76,7 @@ def spuis401():
     nrwrts = 74
     undefd = 1.0e10
     strmnd = 42
-    crtsch = 56
+    krtsch = 56
     schtnd = 13
 
     # --- FORMAT PRINTS
@@ -101,10 +101,10 @@ def spuis401():
 
     # --- MOGELIJKE STROOMREGIMES
     #     De drie mogelijke stroomregimes (stromend, schietend en
-    #     critisch) worden door integers gerepresenteerd, de waarden van
+    #     kritisch) worden door integers gerepresenteerd, de waarden van
     #     de integers zijn niet van belang
     #       STRMND : stromend
-    #       CRTSCH : critisch
+    #       CRTSCH : kritisch
     #       SCHTND : schietend
 
     # --- MOGELIJKE REKENRICHTINGEN
@@ -134,9 +134,9 @@ def spuis401():
     #       debiet : debiet in lopende run
 
     # --- FUNCTIONS
-    #       minwst  : Minimale waterstand bij critsiche doorsnede
-    #       bovwst  : Bovenwaterstand bij critische doorsnede
-    #       benwst  : Benedenewaterstand bij critische doorsnede
+    #       minwst  : Minimale waterstand bij kritische doorsnede
+    #       bovwst  : Bovenwaterstand bij kritische doorsnede
+    #       benwst  : Benedenewaterstand bij kritische doorsnede
     #       wsprng  : Watersprongrelatie voor horizontale bodem !
     #       tblok   : Characterstring met gegevens tekal blok
 
@@ -155,7 +155,7 @@ def spuis401():
     #                           van x
     #       file 5 : *.UQH ---> uitvoerbestand waarin :
     #                           QH-relatie , waterstanden aan beide zijden
-    #                           van de sluis, het verval en de critische
+    #                           van de sluis, het verval en de kritische
     #                           doorsnede
     #       file 6 : betreft het beeldscherm
     #
@@ -319,20 +319,20 @@ def spuis401():
             # Rekenrichting stroomopwaarts:
             if rchtng == opwrts:
                 # Bereken voor drsn. ID waterstand bij grensdiepte:
-                # Diepte wanneer krtisiche stroming verwacht kan worden.
+                # Diepte wanneer kritische stroming verwacht kan worden.
                 w1 = minwst(id, ws, debiet, bm, dn_des, prof_des)
 
-                # Als voor drsn. ID waterstand hoger dan waterst. bij grensdiepte dan is sprake van stromend water,
+                # Als voor drsn. ID waterstand hoger is dan waterst. bij grensdiepte dan is sprake van stromend water,
                 # bereken WS(ID-2) en maak ID=ID-1:
                 if ws[id - 1] >= w1:
                     ws[id - 2] = reknop(id, ws, debiet, bm, dn_des, prof_des)
                     id -= 1
                 else:
-                    print('Critische doorsnede')
-                    rg[id - 2] = crtsch
+                    print('Kritische doorsnede')
+                    rg[id - 2] = krtsch
                     icrit = id - 1
 
-                    # Bereken bovenwaterstand WS(ID-2) als critische doorsnede (JFN=2):
+                    # Bereken bovenwaterstand WS(ID-2) als kritische doorsnede (JFN=2):
                     ws[id - 2] = bovwst(id, ws, debiet, bm, dn_des, prof_des)
 
                     # Bereken benedenwaterstand W1 bij schietend water:
@@ -365,7 +365,7 @@ def spuis401():
             elif wsprng(id - 1, id, ws[id - 2], ws[id - 1], debiet, dn_des, prof_des):
                 # Als watersprong optreedt ga dan terug door
                 # stroomopwaarts te gaan rekenen en maak ID=ID:
-                # Watersprong is wanneer superkritisch naar subkritsch gaat (overturning)
+                # Watersprong is wanneer superkritisch naar subkritisch gaat (overturning)
                 print('Watersprong')
                 id = laatst
                 rchtng = opwrts

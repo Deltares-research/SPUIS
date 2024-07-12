@@ -15,10 +15,9 @@ def bckwtr(id, ws, debiet, jfn, bm, dn_des, prof_des):
 
     #     voor berekeningsmethode backwatercurves zijn de volgende
     #     berekeningsmogelijkheden
-
-    #     jfn=1: Minimale waterstand bij critische doorsnede
-    #     jfn=2: Bovenwaterstand als critische doorsnede
-    #     jfn=3: Benedenwaterstand bij critische doorsnede bovenstrooms
+    #     jfn=1: Minimale waterstand bij kritische doorsnede
+    #     jfn=2: Bovenwaterstand als kritische doorsnede
+    #     jfn=3: Benedenwaterstand bij kritische doorsnede bovenstrooms
     #     jfn=4: Berekent bovenwaterstand (stroomopwaarts rekenen)
     #     jfn=5: Berekent benedenwaterstand (stroomafwaarts rekenen)
     #
@@ -27,15 +26,16 @@ def bckwtr(id, ws, debiet, jfn, bm, dn_des, prof_des):
     #
     #     jfn=6: Berekent bovenwaterstand (stroomopwaarts rekenen)
     #     jfn=7: Berekent benedenwaterstand (stroomafwaarts rekenen)
+    
     zb, xd = dn_des['zb'], dn_des['xd']
 
     #     Keuze rekenmethode
     if jfn == 2:
-        # JFN=2: Bovenwaterstand als critische doorsnede
+        # JFN=2: Bovenwaterstand als kritische doorsnede
         return zb[id-2] + grensd(debiet, id-1, dn_des, prof_des)
 
     elif jfn == 3:
-        # JFN=3: Benedenwaterstand bij critische doorsnede bovenstrooms
+        # JFN=3: Benedenwaterstand bij kritische doorsnede bovenstrooms
         # Critische bovenwaterstand:
         w1 = zb[id-2] + grensd(debiet, id-1, dn_des, prof_des)
 
@@ -209,8 +209,8 @@ def bckwtr(id, ws, debiet, jfn, bm, dn_des, prof_des):
         return w2
 
     else:
-        # JFN=1: Minimale waterstand bij critische doorsnede
-        # Bovenwaterstand als critische doorsnede
+        # JFN=1: Minimale waterstand bij kritische doorsnede
+        # Bovenwaterstand als kritische doorsnede
         w1 = zb[id - 2] + grensd(debiet, id - 1, dn_des, prof_des)
         # Bereken benedenwaterstand W2 met Bernoulli (stromend)
         w2 = brnoul(id - 1, id, w1, 0.0, debiet, 2, dn_des, prof_des)

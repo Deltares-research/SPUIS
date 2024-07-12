@@ -129,8 +129,8 @@ def spuis401():
     #                1 = ber. methode Bernoulli/impulsvgl.
     #       nr     : aantal runs
     #       ir     : teller voor runs
-    #       wsbe   : benedenwaterstand in run i
-    #       qt     : debiet in run i
+    #       wsbe   : benedenwaterstand in run ir-1
+    #       qt     : debiet in run ir-1
     #       debiet : debiet in lopende run
 
     # --- FUNCTIONS
@@ -264,7 +264,7 @@ def spuis401():
     # print('Einde invoer')
     # Sluit invoerbestanden
 
-    # ================== Shrijf data weg  =========================
+    # ================== Schrijf data weg  =========================
 
     # Schrijf initialisatie
     file3 = open(outputName + ".uin", 'a')
@@ -323,7 +323,7 @@ def spuis401():
                 w1 = minwst(id, ws, debiet, bm, dn_des, prof_des)
 
                 # Als voor drsn. ID waterstand hoger dan waterst. bij grensdiepte dan is sprake van stromend water,
-                # bereken WS(ID-1) en maak ID=ID-1:
+                # bereken WS(ID-2) en maak ID=ID-1:
                 if ws[id - 1] >= w1:
                     ws[id - 2] = reknop(id, ws, debiet, bm, dn_des, prof_des)
                     id -= 1
@@ -332,7 +332,7 @@ def spuis401():
                     rg[id - 2] = crtsch
                     icrit = id - 1
 
-                    # Bereken bovenwaterstand WS(ID-1) als critische doorsnede (JFN=2):
+                    # Bereken bovenwaterstand WS(ID-2) als critische doorsnede (JFN=2):
                     ws[id - 2] = bovwst(id, ws, debiet, bm, dn_des, prof_des)
 
                     # Bereken benedenwaterstand W1 bij schietend water:

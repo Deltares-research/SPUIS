@@ -61,14 +61,14 @@ def brnoul(id1, id2, hw1, hw2, debiet, jfn, dn_des, prof_des):
         hm = zb[id1-1] + grensd(debiet, id1, dn_des, prof_des)
         h1 = hm
         dhw = debiet**2 * (xd[id1-1] - xd[id2-1]) / (opperv(id1, h1, dn_des, prof_des) + opperv(id2, hw2, dn_des, prof_des)) / 2 / (
-                (chezyc(id1, h1) + chezyc(id2, hw2)) / 2) ** 2 / (hydstr(id1, h1) + hydstr(id2, hw2)) / 2
+                (chezyc(id1, h1, dn_des, prof_des) + chezyc(id2, hw2, dn_des, prof_des)) / 2) ** 2 / (hydstr(id1, h1, dn_des, prof_des) + hydstr(id2, hw2, dn_des, prof_des)) / 2
         f1 = energh(id1, h1, debiet, dn_des, prof_des) - energh(id2, hw2, debiet, dn_des, prof_des) + dhw
 
         # Oplossen
         while abs(dh)>=0.00001:
             h2 = h1 + dh
             dhw = debiet**2 * (xd[id1-1] - xd[id2-1]) / (opperv(id1, h2, dn_des, prof_des) + opperv(id2, hw2, dn_des, prof_des)) / 2 / (
-                    (chezyc(id1, h2) + chezyc(id2, hw2)) / 2) ** 2 / (hydstr(id1, h2) + hydstr(id2, hw2)) / 2
+                    (chezyc(id1, h2, dn_des, prof_des) + chezyc(id2, hw2, dn_des, prof_des)) / 2) ** 2 / (hydstr(id1, h2, dn_des, prof_des) + hydstr(id2, hw2, dn_des, prof_des)) / 2
             f2 = energh(id1, h2, debiet, dn_des, prof_des) - energh(id2, hw2, debiet, dn_des, prof_des) + dhw
             if f2 * (f2 - f1) > 0:
                 dh = -0.1 * dh

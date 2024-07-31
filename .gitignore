@@ -10,3 +10,10 @@ docs/source/old/test.rst
 docs/source/old/theory.rst
 docs/source/old/usage.rst
 docs/source/support.rst
+
+# Ignore Python bytecode files
+SPUIS/SPUIS401/py/__pycache__/
+
+# Other files and directories to ignore
+*.pyc
+*.pyo

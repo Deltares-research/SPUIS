@@ -21,8 +21,8 @@ import matplotlib.pyplot as plt
 import subprocess
 
 #%% Set constants (Directory with code
-spuisdir = os.getcwd()+'/SPUIS401'
-spuisEXE = 'SPUIS401.exe'
+spuisdir = os.getcwd()+'/SPUIS/SPUIS401'
+spuisEXE = 'SPUISV03.exe'
 
 #%% Functions
 sys.path.insert(1, spuisdir)

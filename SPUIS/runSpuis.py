@@ -19,6 +19,7 @@ import shutil
 import time
 import matplotlib.pyplot as plt
 import subprocess
+import importlib.util
 
 #%% Set constants (Directory with code
 spuisdir = os.getcwd()+'/SPUIS/SPUIS401'
@@ -26,7 +27,10 @@ spuisEXE = 'SPUISV03.exe'
 
 #%% Functions
 sys.path.insert(1, spuisdir)
-import py.POSTPROC as pp
+module_path = os.path.join(spuisdir, 'py', 'POSTPROC.py')
+spec = importlib.util.spec_from_file_location('POSTPROC', module_path)
+pp = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(pp) # As an alternative to "import py.POSTPROC as pp"
 
 #%% Options
 print('')

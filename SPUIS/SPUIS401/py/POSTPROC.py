@@ -183,7 +183,9 @@ def read_spuisout(spuisinput, uqh_file, uws_file):
 
         #        tmp_df = pd.read_csv(data, names=header, delim_whitespace=True, skiprows=2)
         data.close()
-        uws_df = pd.concat([uws_df, tmp_df], ignore_index=True)
+        dfs_to_concat = [df for df in [uws_df, tmp_df] if not df.empty and not df.isna().all().all()]
+        # uws_df = pd.concat([uws_df, tmp_df], ignore_index=True) # caused FutureWarning for future pd versions
+        uws_df = pd.concat(dfs_to_concat, ignore_index=True)
 
     return uqh_df, uws_df
 

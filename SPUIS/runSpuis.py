@@ -22,7 +22,7 @@ import subprocess
 import importlib.util
 
 #%% Set constants (Directory with code
-spuisdir = os.getcwd()+'/SPUIS/SPUIS401'
+spuisdir = os.getcwd()+'/SPUIS401'
 spuisEXE = 'SPUISV03.exe'
 
 #%% Functions

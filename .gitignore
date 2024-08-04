@@ -11,9 +11,13 @@ docs/source/old/theory.rst
 docs/source/old/usage.rst
 docs/source/support.rst
 
+# Ignore workfiles
+SPUIS/SPUIS401/work.in
+SPUIS/SPUIS401/work.uin
+SPUIS/SPUIS401/work.uqh
+SPUIS/SPUIS401/work.uws
+
 # Ignore Python bytecode files
 SPUIS/SPUIS401/py/__pycache__/
-
-# Other files and directories to ignore
 *.pyc
 *.pyo

@@ -7,7 +7,7 @@ This is the documentation for **SPUIS**, a 1D `Deltares <https://www.deltares.nl
 
    SPUIS is based on the Dutch word "spuisluis", meaning "discharge sluice" or "sluice gate" in English.
 
-The implementation of SPUIS was tested by comparison with measurements from physical scale model tests of discharge sluices Dintelsas and Crèvecoeur in the Netherlands [1]_. In the past, SPUIS has been applied to support the design of hydraulic structures, such as pumping station Oosterhout (1995) [4]_, discharge sluice Nieuwe Statenzijl [2]_, and discharge sluice Brouwersdam (2018) [4]_ in the Netherlands.
+The implementation of SPUIS was tested by comparison with measurements from physical scale model tests of discharge sluices Dintelsas and Crèvecoeur in the Netherlands [1]_. In the past, SPUIS has been applied to support the design of hydraulic structures, such as the discharge sluice in Nieuwe Statenzijl (1987) [2]_, Oosterhout (1995) [4]_, and the Brouwersdam (2018) [4]_ in the Netherlands.
 
 Contents
 -----------

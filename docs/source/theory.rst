@@ -13,4 +13,4 @@ To run calculations with SPUIS, the hydraulic structure must be schematized into
 
 SPUIS has two built-in computation methods: the user can pick from using either backwater curves (for structures with a free surface) or Bernoulli and momentum equations. A SPUIS calculation always starts at the first cross-section on the downstream side. SPUIS assumes that the flow is steady and initially subcritical. Calculations are then made at each cross-section while moving in the upstream direction. On a transition to the supercritial flow regime, indicated by finding a critical cross-section, the direction of the computations automatically switches to the downstream direction. SPUIS will then continue in the downstream direction until it finds the transition back to the subcritical regime, indicated by a (submerged) hydraulic jump. After finding the hydraulic jump, SPUIS will resume its calculation, again in the upstream direction, from the location it originally had found the critical cross-section. This process of switching the direction of the calculations is shown below. 
 
-.. image:: ../../images/Krammersluizen.jpg
+.. image:: ../../images/rekenschema.png

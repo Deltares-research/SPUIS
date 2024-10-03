@@ -11,6 +11,17 @@ This example demonstrates the capabilities of SPUIS4.01 by applying it to a real
 
 .. image:: ../images/schematisatie_Bath.png
 
-The result of schematizing discharge sluice Bath in SPUIS4.01 are shown below together with field measurements from 1988 and calibrated calculations used by Rijkswaterstaat (Directorate-General of the Ministry of Infrastructure and Water Management of the Netherlands) in their operational water management. The configuration of each culvert during the measurements is denoted by “O” for fully opened and “X” for closed. 
+The result of schematizing discharge sluice Bath in SPUIS4.01 is shown below for several configurations (black lines). Shown along with the results are a set of field measurements (+) from 1988 [1] and calibrated calculations (o) used by Rijkswaterstaat (Directorate-General of the Ministry of Infrastructure and Water Management of the Netherlands) in their operational water management [2]. The configuration of each culvert is denoted by “O” for fully opened and “X” for closed. The SPUIS schematization shows good agreement with the field measurements and calibrated calculations.
 
 .. image:: ../images/resultaat_Bath.png
+
+The input file for the schematization of one of Bathse Spuisluis' culverts is shown below. To create schematizations for other culvert configurations, the wet perimeter of every profile that describes part of the discharge sluice should be adjusted.
+
+.. literalinclude:: ../input/bath.in
+   :language: none
+
+Literature
+----------
+
+[1] Rijkswaterstaat (1988). 'Meetresultaten debietmeting Bathse Spuisluis - 17 t/m 23 juni 1988.'
+[2] `Rijkswaterstaat Waterinfo <https://waterinfo.rws.nl/#/publiek/waterafvoer>`

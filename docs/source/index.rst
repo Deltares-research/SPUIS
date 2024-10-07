@@ -25,11 +25,11 @@ Literature
 [5] Deltares (2018). ‘Bepaling afvoercoëfficiënt doorlaatmiddel Brouwersdam.’ Report 11202901-002-ZKS-0002.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
+   theory 
    getting-started
-   theory
    examples
    tutorial
    code

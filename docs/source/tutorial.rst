@@ -6,9 +6,7 @@ This tutorial will guide you through the steps required to set up a SPUIS schema
 An input file that contains the schematization of the discharge sluice consists of roughly three sections: 
 1.	Boundary conditions: calculation method and a discharge and downstream water level for each model run
 2.	Slices: divide the discharge sluice into slices that capture changes in the lateral profile of the discharge sluice
-3.	Profiles: define profiles that describe the geometry in the slices
-
-The set-up of this input file is explained step by step for each of these sections.
+3.	Profiles: define profiles that describe the geometry of the slices
 
 Defining the boundary conditions
 --------------------------------
@@ -24,7 +22,7 @@ SPUIS allows the use of either backwater curves (``0``) or Bernoulli and momentu
    **
    1
 
-The next section of the input file requires the definition of the amount of runs (at least 1, at most 100). Immediately afterwards, you can specifiy the downstream water level [m] and discharge (m3/s) for each of the runs:
+The next section of the input file requires the definition of the amount of runs (at least 1, at most 100). Immediately afterwards, you can specifiy the downstream water level [m] and discharge (m:sup:`3`/s) for each of the runs:
 
 .. code-block:: none
 
@@ -35,15 +33,15 @@ The next section of the input file requires the definition of the amount of runs
    **
    **  FOR EACH RUN:
    **
-   **  downstream water level         	wsbe  [m]
+   **  downstream water level         wsbe  [m]
    **  flow rate	                    qt    [m3/s]
    **
    **  Column 1	Column 2
    **  wsbe		qt
    **
-    -0.359 2500.0
-    -0.444 3000.0
-    -0.543 3500.0
+    -0.30 250.0
+    -0.40 300.0
+    -0.50 350.0
 
 Defining the slices
 -------------------
@@ -55,7 +53,7 @@ The geometry of the discharge sluice is defined by dividing it into slices in th
    **
    7
 
-Then, every slice needs to be defined by an identification number, x-location [m], bottom level [m] and profile number. The identification numbers should be in chronological order, moving from the upstream in the downstream direction. The x-location allows you to define the length of each slice and the bed level give a reference height for the profiles that describe the geometry of the slices. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more slices:
+Then, every slice needs to be defined by an identification number, x-location [m], bottom level [m] and profile number. The identification numbers should be in chronological order, moving from the upstream to the downstream direction. The x-location allows you to define the length of each slice and the bed level gives a reference height for the profiles that describe the geometry of the slices. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.
 
 .. code-block:: none
 
@@ -85,7 +83,7 @@ Defining the profiles
 The geometry of each slice of the discharge sluice is described using a profile. The entire geometry can be defined using a minimum of 2 and a maximum of 20 profiles. A single profile can be applied to multiple slices.
 Profiles are defined at the very end of the input file and follow a specific structure. The first line of each profile definition consists of an identification number, the number of depths at which the width of the profile will be provided, and the Nikuradse roughness length. Then, for each of the depths, a line is added that consists of three values: the bottom level z (with respect to z_0), the width W and the wet perimeter P. In case of losses due to widening, narrowing or the presence of rebates or other irregularities, the wet perimeter must be corrected by multiplying it with a loss factor ξ. Three examples are provided below for profiles 1 (canal upstream of Bath), 4 (culvert inlets with losses) and 5 (inside the culverts). The areas in which these profiles are valid are highlighted in red in Figure 1. 
 
-The first prompt is the number of profiles:
+The first entry is the number of profiles:
 
 .. code-block:: none
 
@@ -93,40 +91,60 @@ The first prompt is the number of profiles:
    **
    3
 
-Each profile follows the same structure. The first line consists of ``profile number`` ``number of y-values`` ``roughness``. This line is then followed by as many lines as indicated in ``number of y-values``. Each of these lines indicates the ``y-value`` ``width at y-value`` ``wet perimeter at y-value``.
+Each profile follows the same structure. The first line consists of ``profile number`` ``number of y-values`` ``roughness``. This line is then followed by as many lines as indicated in ``number of y-values``. Each of these lines indicates the ``y-value`` ``width at y-value`` ``wet perimeter at y-value``. 
+
+Let's first create an example profile for a canal with sloped sides. We will define the profile at three y-locations and assume that the roughness length of its sandy bed is k:sub:`s` = 0.01 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` (indicated in blue and orange, respectively) are defined. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
+
+.. image:: ../images/sketch_profile1.png
 
 .. code-block:: none
 
    **
    **  profile 1: canal
    **
-    1 3 0.010
-    0.00 0.000 0.0
-    0.01 10000.0 10000.0
-    15.0 10000.0 10030.0
+    1 3 0.01
+    0.00 0.00 0.00
+    0.01 20.0 20.0
+    4.00 52.0 52.98
    **
+
+The next example profile is two closed-off square culverts. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is k:sub:`s` = 0.002 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wet perimeter at this y-location is not zero, as the ceiling is now included in the total wet perimeter. SPUIS cannot split into two or more parallel culverts and these culverts are therefore schematized as a single wider culvert for the width, but for the wet perimeter each wall needs to be taken into account in the total length.
+
+.. image:: ../images/sketch_profile2.png
+
+.. code-block:: none
+
    **
    **  profile 2: culverts
    **
-    2      4     0.600
-    0.00   0.00  0.00
-    0.01   8.00  8.00
-    4.00   8.00  24.00
-    4.01   0.00  32.00
+    2 4 0.002
+    0.00 0.00 0.00
+    0.01 8.00 8.00
+    4.00 8.00 24.00
+    4.01 0.00 32.00
    **
+
+In case of losses due to widening, narrowing or the presence of rebates or other irregularities, the wet perimeter must be corrected by multiplying it with a loss factor. The final example is the same as the previous example in terms of geometry, but due to the presence of rebates in a section of the culverts we should take into account the hydraulic losses. Let's say the loss factor is equal to 0.72. We must now multiply the wet perimeter at each y-location by 0.72:
+
+.. image:: ../images/sketch_profile3.png
+
+.. code-block:: none
+
    **
-   **  profile 3: rebates within culverts
+   **  profile 3: rebates (c = 0.72) within culverts
    **
     3 4 0.002
-    0.00 0.0000 0.0
-    0.01 165.25 165.25
-    15.0 165.25 195.25
+    0.00 0.00 0.00
+    0.01 8.00 5.76
+    4.00 8.00 17.28
+    4.01 0.00 23.04
 
-Recommended sources for calculating the hydraulic losses due to narrowing, widening, rebates or other irregularities are:
-•	“Internal flow systems” by D.S. Miller (1978)
-•	“Open-Channel Hydraulics” by V.T. Chow (1985)
-•	“Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
-•	“Open-Channel Hydraulics” by R.H. French (1994)
+Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the hydraulic losses are:
+- “Internal flow systems” by D.S. Miller (1978)
+- “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idel'chik (1960)
+- “Open-Channel Hydraulics” by V.T. Chow (1985)
+- “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
+- “Open-Channel Hydraulics” by R.H. French (1994)
 
 Creating the input file
 --------------------------------
@@ -135,9 +153,9 @@ The input file (``.in``) can now be created. The standard format for input files
 .. code-block:: none
 
    **###########################################################
-   **Date		: 01-10-2024                                
+   **Date		  : 01-10-2024                                
    **Filename	: tutorial.in                                
-   **Sluice	   : Example                      	
+   **Sluice	  : Example                      	
    **
    **Input file for program SPUIS version 4.01, March 1995.	
    **Calculation of discharge relations of discharge sluices.
@@ -154,22 +172,22 @@ The input file (``.in``) can now be created. The standard format for input files
    **
    1
    **
-   **  Number of runs               	nr  [-]
+   **  Number of runs              nr  [-]
    **  Minimum 1, maximum 100.
    **
    3
    **
    **  FOR EACH RUN:
    **
-   **  downstream water level         	wsbe  [m]
-   **  flow rate	                    qt    [m3/s]
+   **  downstream water level     wsbe  [m]
+   **  flow rate	                qt    [m3/s]
    **
    **  Column 1	Column 2
    **  wsbe		qt
    **
-    -0.359 2500.0
-    -0.444 3000.0
-    -0.543 3500.0
+    -0.30 250.0
+    -0.40 300.0
+    -0.50 350.0
    **
    **
    **  GEOMETRY OF SLUICE
@@ -179,7 +197,7 @@ The input file (``.in``) can now be created. The standard format for input files
    **	need to be defined here.
    **
    **
-   **  EXAMPLE top view of sluice:					   +++++++++++++++++++++
+   **  EXAMPLE top view of sluice:					       +++++++++++++++++++++
    **                                              +
    **  ++++++++++++++++++++++++++                  +
    **                           ++++++++++++++++++++
@@ -202,33 +220,28 @@ The input file (``.in``) can now be created. The standard format for input files
    **
    **  Number of slices				nx  [-]
    **
-   12
+   7
    **
    **  FOR EVERY SLICE:
    **
    **  slice number					id  [-]
    **  X-distance						xd  [m]
    **  Bottom level					zb  [m]
-   **  Profile number					pn  [-]
+   **  Profile number				pn  [-]
    **
    **  Define slices with increasing number!
    **
-   **  Column 1	Column 2	Column 3		Column 4
-   **  id-number	X-distance	Bottom level	Profile number
-   **  id			xd			zb				pn
+   **  Column 1  Column 2   Column 3      Column 4
+   **  id-number X-distance	Bottom level	Profile number
+   **  id			   xd			    zb				    pn
    **
-   1 -1020.0 -13.0 1
-   2   -20.0 -13.0 2
-   3     0.0 -11.5 3
-   4     5.0 -11.5 4
-   5    22.8 -11.5 5
-   6    30.0 -11.5 6
-   7    31.4 -11.5 5
-   8    49.0 -11.5 5
-   9    74.0 -13.0 7
-   10  192.4 -13.0 8
-   11  339.0 -13.0 8
-   12 1339.0 -13.0 1
+   1   0.0 -7.0 1
+   2   10.0 -7.0 1
+   3   11.0 -5.0 2
+   4   15.0 -5.0 3
+   5   20.0 -5.0 2
+   6   30.0 -7.0 1
+   7   31.4 -7.0 1
    **
    **
    **  FOR EVERY SLUICE SECTION:
@@ -239,7 +252,7 @@ The input file (``.in``) can now be created. The standard format for input files
    **  Discharge relation				ar  [-]
    **  Only use discharge relation 0 (backwater curve).
    **
-   0 0 0 0 0 0 0 0 0 0 0
+   0 0 0 0 0 0
    **
    **
    **  DESCRIPTION PROFILES
@@ -269,34 +282,36 @@ The input file (``.in``) can now be created. The standard format for input files
    **	1 row with 3 number
    **		profile number				ip  [-]
    **		number of points			ny  [-]
-   **		roughness					rb  [m]
-   **  ny rows with 3 number
-   **     level of each point			dp  [m]
-   **     width at each point			bp  [m]
-   **     wet perimeter at each point	op  [m]
+   **		roughness					    rb  [m]
+   **  ny rows with 3 numbers
+   **     level of each point			     dp  [m]
+   **     width at each point			     bp  [m]
+   **     wet perimeter at each point	 op  [m]
    **
    **
    **	Enter the profile in increasing order!
    **
    **  profile 1: canal
    **
-    1 3 0.010
-    0.00 0.000 0.0
-    0.01 10000.0 10000.0
-    15.0 10000.0 10030.0
+    1 3 0.01
+    0.00 0.00 0.00
+    0.01 20.0 20.0
+    4.00 52.0 52.98
    **
    **
    **  profile 2: culverts
    **
-    2 4 0.600
-    0.00 0.0000 0.0
-    0.01 130.55 130.55
-    15.0 130.55 160.55
+    2 4 0.002
+    0.00 0.00 0.00
+    0.01 8.00 8.00
+    4.00 8.00 24.00
+    4.01 0.00 32.00
    **
    **
-   **  profile 3: rebates within culverts
+   **  profile 3: rebates (c = 0.72) within culverts
    **
     3 4 0.002
-    0.00 0.0000 0.0
-    0.01 165.25 165.25
-    15.0 165.25 195.25
+    0.00 0.00 0.00
+    0.01 8.00 5.76
+    4.00 8.00 17.28
+    4.01 0.00 23.04

@@ -10,7 +10,7 @@ An input file that contains the schematization of the discharge sluice consists 
 
 Defining the boundary conditions
 --------------------------------
-SPUIS allows the use of either backwater curves (``0``) or Bernoulli and momentum equations (``1``). During the simulations, SPUIS automatically changes the direction of the calculations whenever it encounters a critical cross-section. The calculation methods are explained in more detail in the `theory <https://spuis.readthedocs.io/en/latest/theory.html>`_ chapter.
+SPUIS allows the use of either backwater curves (``0``) or Bernoulli and momentum equations (``1``). During the simulations, SPUIS automatically changes the direction of the calculations whenever it encounters a critical cross-section. The calculation methods are explained in more detail in the `theory <https://spuis.readthedocs.io/en/latest/theory.html>`_ chapter. Let's say we would like to use Bernoulli and momentum equations:
 
 .. code-block:: none
 
@@ -80,10 +80,7 @@ Then, every slice needs to be defined by an identification number, x-location [m
 
 Defining the profiles
 ---------------------
-The geometry of each slice of the discharge sluice is described using a profile. The entire geometry can be defined using a minimum of 2 and a maximum of 20 profiles. A single profile can be applied to multiple slices.
-Profiles are defined at the very end of the input file and follow a specific structure. The first line of each profile definition consists of an identification number, the number of depths at which the width of the profile will be provided, and the Nikuradse roughness length. Then, for each of the depths, a line is added that consists of three values: the bottom level z (with respect to z_0), the width W and the wet perimeter P. In case of losses due to widening, narrowing or the presence of rebates or other irregularities, the wet perimeter must be corrected by multiplying it with a loss factor ξ. Three examples are provided below for profiles 1 (canal upstream of Bath), 4 (culvert inlets with losses) and 5 (inside the culverts). The areas in which these profiles are valid are highlighted in red in Figure 1. 
-
-The first entry is the number of profiles:
+The geometry of each slice of the discharge sluice is described using a profile. The entire geometry can be defined using a minimum of 2 and a maximum of 20 profiles. A single profile can be applied to multiple slices. The first entry is the number of profiles:
 
 .. code-block:: none
 

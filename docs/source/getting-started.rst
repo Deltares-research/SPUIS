@@ -27,10 +27,10 @@ where Y will save all figures to the input folder directly, and N will show the 
 
    Use a single input file? Alternative is selecting a folder containing input files [Y/N] 
 
-where Y will open up your file explorer and allow you to choose a single input (.in) file, and N will allow you to select a folder with multiple input files that will then run consecutively.
+where Y will open up your file explorer and allow you to choose a single input (``.in``) file, and N will allow you to select a folder with multiple input files that will then run consecutively.
 
-Three output files with raw data will be generated. Files with extension .uin repeat the input (restructured from .in file), followed by detailed information about each run: x-location, water levels, bed levels, energy heights, Froude numbers, boundary layer depth, velocity, wet perimeter and flow regime. Files with extension .uws show only the latter part with detailed information about each run, and .uqh files show a short summary with only water levels (and head differences), discharge and flow regime.
+Three output files with raw data will be generated. Files with extension ``.uin`` repeat the input (restructured from ``.in`` file), followed by detailed information about each run: x-location, water levels, bed levels, energy heights, Froude numbers, boundary layer depth, velocity, wet perimeter and flow regime. Files with extension ``.uws`` show only the latter part with detailed information about each run, and ``.uqh`` files show a short summary with only water levels, head differences, discharge and flow regime per run.
 
-The .uws files with detailed information are used to generate 4 subfigures for each run with some additional details of the in- and output of the simulation. An example of such a figure is shown below.
+The ``.uws`` files with detailed information are used to generate 4 subfigures for each run with some additional details of the in- and output of the simulation. An example of such a figure is shown below.
 
 .. image:: ../images/bath_uws_01of10.png

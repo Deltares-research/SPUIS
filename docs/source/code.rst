@@ -33,7 +33,7 @@ Overview of Python functions
 
 .. py:function:: chezyc(id, hw, dn_des, prof_des)
 
-	Calculates the Chézy coefficient per slice and water level. 
+	Calculates the Chézy coefficient per slice and water level using the Colebrook-White equation.
 
 .. py:function:: energh(id, hw, debiet, dn_des, prof_des)
 	

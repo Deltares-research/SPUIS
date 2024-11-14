@@ -1,7 +1,7 @@
 SPUIS
 ===================================
 
-This is the documentation for **SPUIS** 4.02, a 1D `Deltares <https://www.deltares.nl/>`_ tool for calculating water levels and flow velocities in discharge sluices. SPUIS can be applied to both open channel flow and culverts. SPUIS was originally developed by Delft Hydraulics in 1986 [1] and updated in 1989 [3] and 1995 [4]. The latter version was converted from the original Fortran code to the currently available Python code in 2024 and contains the same functionality as version SPUIS 4.01 from 1995. 
+This is the documentation for **SPUIS**, a 1D `Deltares <https://www.deltares.nl/>`_ tool for calculating water levels and flow velocities in discharge sluices. SPUIS can be applied to both open channel flow and culverts. SPUIS was originally developed by Delft Hydraulics in 1986 [1] and updated in 1989 [3] and 1995 [4]. The latter version was converted from the original Fortran code to the currently available Python code in 2024 (SPUIS 4.02) and contains the same functionality as version SPUIS 4.01 from 1995. 
 
 .. note::
 

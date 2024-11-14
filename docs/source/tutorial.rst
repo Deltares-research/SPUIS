@@ -22,7 +22,7 @@ SPUIS allows the use of either backwater curves (``0``) or Bernoulli and momentu
    **
    1
 
-The next section of the input file requires the definition of the amount of runs (at least 1, at most 100). Immediately afterwards, you can specifiy the downstream water level [m] and discharge (m:sup:`3`/s) for each of the runs:
+The next section of the input file requires the definition of the amount of runs (at least 1, at most 100). Immediately afterwards, you can specify the downstream water level [m] and discharge [m³/s] for each of the runs:
 
 .. code-block:: none
 
@@ -53,7 +53,7 @@ The geometry of the discharge sluice is defined by dividing it into slices in th
    **
    7
 
-Then, every slice needs to be defined by an identification number, x-location [m], bottom level [m] and profile number. The identification numbers should be in chronological order, moving from the upstream to the downstream direction. The x-location allows you to define the length of each slice and the bed level gives a reference height for the profiles that describe the geometry of the slices. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.
+Then, every slice needs to be defined by an identification number, x-location [m], bottom level [m] and profile number. The identification numbers should be in chronological order, moving from the upstream to the downstream direction. The x-location allows you to define the location of each slice along the waterway with respect to a (user-defined) reference location, and the bed level gives a reference height for the profiles that describe the geometry of the slice in-between two x-locations. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.
 
 .. code-block:: none
 
@@ -90,7 +90,7 @@ The geometry of each slice of the discharge sluice is described using a profile.
 
 Each profile follows the same structure. The first line consists of ``profile number`` ``number of y-values`` ``roughness``. This line is then followed by as many lines as indicated in ``number of y-values``. Each of these lines indicates the ``y-value`` ``width at y-value`` ``wet perimeter at y-value``. 
 
-Let's first create an example profile for a canal with sloped sides. We will define the profile at three y-locations and assume that the roughness length of its sandy bed is k:sub:`s` = 0.01 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` (indicated in blue and orange, respectively) are defined. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
+Let's first create an example profile for a canal with sloped sides. We will define the profile at three y-locations and assume that the roughness length of its sandy bed is :math:`k_{s}` = 0.01 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` (indicated in blue and orange, respectively) are defined. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
 
 .. image:: ../images/sketch_profile1.png
 
@@ -105,7 +105,7 @@ Let's first create an example profile for a canal with sloped sides. We will def
     4.00 52.0 52.98
    **
 
-The next example profile is two closed-off square culverts. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is k:sub:`s` = 0.002 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wet perimeter at this y-location is not zero, as the ceiling is now included in the total wet perimeter. SPUIS cannot split into two or more parallel culverts and these culverts are therefore schematized as a single wider culvert for the width, but for the wet perimeter each wall needs to be taken into account in the total length.
+The next example profile is two closed-off square culverts. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is :math:`k_{s}` = 0.002 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wet perimeter at this y-location is not zero, as the ceiling is now included in the total wet perimeter. SPUIS cannot split into two or more parallel culverts and these culverts are therefore schematized as a single wider culvert for the width, but for the wet perimeter each wall needs to be taken into account in the total length.
 
 .. image:: ../images/sketch_profile2.png
 

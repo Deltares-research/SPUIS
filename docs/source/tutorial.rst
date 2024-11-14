@@ -137,11 +137,11 @@ In case of losses due to widening, narrowing or the presence of rebates or other
     4.01 0.00 23.04
 
 Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the hydraulic losses are:
-- “Internal flow systems” by D.S. Miller (1978)
-- “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idel'chik (1960)
-- “Open-Channel Hydraulics” by V.T. Chow (1985)
-- “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
-- “Open-Channel Hydraulics” by R.H. French (1994)
+* “Internal flow systems” by D.S. Miller (1978)
+* “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idel'chik (1960)
+* “Open-Channel Hydraulics” by V.T. Chow (1985)
+* “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
+* “Open-Channel Hydraulics” by R.H. French (1994)
 
 Creating the input file
 --------------------------------

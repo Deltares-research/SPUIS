@@ -11,10 +11,9 @@ This example demonstrates the results of SPUIS4.01 by applying it to an as-built
 
 .. image:: ../images/schematisatie_Bath.png
 
-To capture the geometry of discharge sluice Bath, seventeen slices were defined. The `Tutorial <https://spuis.readthedocs.io/en/latest/tutorial.html>`_ page explains how this schematization was set up.
+To capture the geometry of discharge sluice Bath, seventeen slices were defined. The `Tutorial <https://spuis.readthedocs.io/en/latest/tutorial.html>`_ page explains how this schematization was set up. Areas shaded in grey have a ceiling:
 
 .. image:: ../images/slices_Bath.png
-*Areas shaded in grey have a ceiling.
 
 The result of schematizing discharge sluice Bath in SPUIS4.01 is shown below (black lines) for several configurations (meaning combinations of open/closed gates). Shown along with the results are a set of field measurements (+) from 1988 [1] and calibrated calculations (o) used by Rijkswaterstaat (Directorate-General of the Ministry of Infrastructure and Water Management of the Netherlands) in their operational water management [2]. The configuration of each culvert is denoted by “O” for fully opened and “X” for closed. The Bernoulli and momentum equation method was applied in these simulations. The SPUIS schematization shows good agreement with the field measurements and calibrated calculations.
 

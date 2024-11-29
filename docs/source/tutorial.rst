@@ -3,8 +3,8 @@ Tutorial
 
 This tutorial will guide you through the steps required to set up a SPUIS schematization and to create an input (``.in``) file. The steps to use your input file to run a SPUIS simulation are explained in the `getting started <https://spuis.readthedocs.io/en/latest/getting-started.html>`_ chapter of the documentation. 
 
-An input file that contains the schematization of the discharge sluice consists of roughly three sections: 
-1.	Boundary conditions: calculation method and a discharge and downstream water level for each model run
+An input file that describes the schematization of the discharge sluice consists of roughly three sections: 
+1.	Boundary conditions: calculation method and a combination of discharge and downstream water level for each model run
 2.	Slices: divide the discharge sluice into slices that capture changes in the lateral profile of the discharge sluice
 3.	Profiles: define profiles that describe the geometry of the slices
 
@@ -22,7 +22,7 @@ SPUIS allows the use of either backwater curves (``0``) or Bernoulli and momentu
    **
    1
 
-The next section of the input file requires the definition of the amount of runs (at least 1, at most 100). Immediately afterwards, you can specify the downstream water level [m] and discharge [m³/s] for each of the runs:
+The next section of the input file requires the definition of the amount of runs (at least 1, at most 100). Each run consists of a combination of a specified downstream water level [m] and discharge [m³/s] as boundary conditions:
 
 .. code-block:: none
 
@@ -90,7 +90,7 @@ The geometry of each slice of the discharge sluice is described using a profile.
 
 Each profile follows the same structure. The first line consists of ``profile number`` ``number of y-values`` ``roughness``. This line is then followed by as many lines as indicated in ``number of y-values``. Each of these lines indicates the ``y-value`` ``width at y-value`` ``wet perimeter at y-value``. 
 
-Let's first create an example profile for a canal with sloped sides. We will define the profile at three y-locations and assume that the roughness length of its sandy bed is :math:`k_{s}` = 0.01 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` (indicated in blue and orange, respectively) are defined. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
+Let's first create an example profile for a canal with sloped sides. We will define the profile at three y-locations and assume that the roughness length of its sandy bed is :math:`k_{s}` = 0.01 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` (indicated in blue and orange, respectively) are defined. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
 
 .. image:: ../images/sketch_profile1.png
 
@@ -99,46 +99,50 @@ Let's first create an example profile for a canal with sloped sides. We will def
    **
    **  profile 1: canal
    **
-    1 3 0.01
-    0.00 0.00 0.00
-    0.01 20.0 20.0
-    4.00 52.0 52.98
+ 1 7 0.01
+ 0.00 0.00 0.00
+ 0.01 65.00 65.00
+ 1.00 73.00 73.25
+ 6.50 117.00 118.60 
+ 6.51 127.00 128.60
+ 7.50 133.00 134.92
+ 7.51 143.00 144.92
    **
 
-The next example profile is two closed-off square culverts. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is :math:`k_{s}` = 0.002 m. The sketch below shows how the width ``W`` and wet perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wet perimeter at this y-location is not zero, as the ceiling is now included in the total wet perimeter. SPUIS cannot split into two or more parallel culverts and these culverts are therefore schematized as a single wider culvert for the width, but for the wet perimeter each wall needs to be taken into account in the total length.
+The next example profile is a single square culvert. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is :math:`k_{s}` = 0.002 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wetted perimeter at this y-location is not zero, as the ceiling is now included in the total wetted perimeter. SPUIS cannot split into two or more parallel culverts. In that case, the culverts need to be schematized as a single wider culvert for the width, but for the wetted perimeter each wall needs to be taken into account in the total length to ensure that the wall friction is calculated correctly by SPUIS.
 
 .. image:: ../images/sketch_profile2.png
 
 .. code-block:: none
 
    **
-   **  profile 2: culverts
+   **  profile 5: culverts
    **
-    2 4 0.002
-    0.00 0.00 0.00
-    0.01 8.00 8.00
-    4.00 8.00 24.00
-    4.01 0.00 32.00
+    5 4 0.002
+    0.00	0.00	0.00
+    0.01	2.80	2.80
+    5.50	2.80	13.8
+    5.51	0.00	16.6
    **
 
-In case of losses due to widening, narrowing or the presence of rebates or other irregularities, the wet perimeter must be corrected by multiplying it with a loss factor. The final example is the same as the previous example in terms of geometry, but due to the presence of rebates in a section of the culverts we should take into account the hydraulic losses. Let's say the loss factor is equal to 0.72. We must now multiply the wet perimeter at each y-location by 0.72:
+In case of losses due to (sudden) widening or narrowing, or the presence of rebates or other irregularities, the wetted perimeter must be corrected by multiplying it with a loss factor. The final example is the same as the previous example in terms of geometry, but due to the presence of rebates in a section of the culverts we should take into account the hydraulic losses. The loss factor for this section of discharge sluice Bath was calculated during scale model experiments in 1982 [1]: :math:`\xi` = 0.10. This means that the contraction coefficient is equal to :math:`C_{c}` = 0.76. We must now multiply the wetted perimeter at each y-location by 0.76:
 
 .. image:: ../images/sketch_profile3.png
 
 .. code-block:: none
 
    **
-   **  profile 3: rebates (c = 0.72) within culverts
+   **  profile 6: culverts, at rebates (c = 0.76)
    **
     3 4 0.002
-    0.00 0.00 0.00
-    0.01 8.00 5.76
-    4.00 8.00 17.28
-    4.01 0.00 23.04
+    0.00	0.00	0.00
+    0.01	2.80	2.1
+    5.50	2.80	10.5
+    5.51	0.00	12.6
 
 Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the hydraulic losses are:
 * “Internal flow systems” by D.S. Miller (1978)
-* “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idel'chik (1960)
+* “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idelchik (1960)
 * “Open-Channel Hydraulics” by V.T. Chow (1985)
 * “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
 * “Open-Channel Hydraulics” by R.H. French (1994)
@@ -154,7 +158,7 @@ The input file (``.in``) can now be created. The standard format for input files
    **Filename	: tutorial.in                                
    **Sluice	  : Example                      	
    **
-   **Input file for program SPUIS version 4.01, March 1995.	
+   **Input file for program SPUIS version 4.02, July 2024.	
    **Calculation of discharge relations of discharge sluices.
    **
    **Remark : Lines starting with '**' are for comments. 		
@@ -272,7 +276,7 @@ The input file (``.in``) can now be created. The standard format for input files
    **	level relative to the bottom level has to be entered (>0).
    **	For every corner point of every profile a width of the 
    **	water surface has to be entered. For every corner point the
-   **	wet perimeter (for a water level at this level) has to be 
+   **	wetted perimeter (for a water level at this level) has to be 
    **	entered.
    **
    **	Order for every profile:
@@ -283,7 +287,7 @@ The input file (``.in``) can now be created. The standard format for input files
    **  ny rows with 3 numbers
    **     level of each point			     dp  [m]
    **     width at each point			     bp  [m]
-   **     wet perimeter at each point	 op  [m]
+   **     wetted perimeter at each point	 op  [m]
    **
    **
    **	Enter the profile in increasing order!
@@ -305,10 +309,14 @@ The input file (``.in``) can now be created. The standard format for input files
     4.01 0.00 32.00
    **
    **
-   **  profile 3: rebates (c = 0.72) within culverts
+   **  profile 3: gate/rebates (xi = 0.10) within culverts
    **
     3 4 0.002
     0.00 0.00 0.00
     0.01 8.00 5.76
     4.00 8.00 17.28
     4.01 0.00 23.04
+
+Literature
+-----------
+* [1] WL | Delft Hydraulics (1982). ‘Lozingsmiddel Zoommeer. Verifikatie en aanpassing ontwerp, bepaling afvoerkarakteristieken en rekenmodel spuisluis met vrije waterspiegel.’ Report M1711/R1372.

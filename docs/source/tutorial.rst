@@ -51,7 +51,7 @@ The next section of the input file requires the definition of the amount of runs
 
 Defining the slices
 -------------------
-The geometry of the discharge sluice is defined by dividing it into slices in the longitudinal direction of the sluice. All changes in the lateral profile should be captured by a slice. The entire geometry can be defined using a minimum of 2 and a maximum of 50 slices. The first entry is the number of slices used to schematize the discharge sluice. We need seventeen slices to capture the geometry of discharge sluice Bath:
+The geometry of the discharge sluice is defined by dividing it into slices in the longitudinal direction of the sluice. All changes in the lateral profile should be captured by a slice. The entire geometry can be defined using a minimum of 2 and a maximum of 50 slices. The first entry is the number of slices used to schematize the discharge sluice. We need seventeen slices to capture the geometry of discharge sluice Bath (areas shaded in grey have a ceiling):
 
 .. code-block:: none
    
@@ -60,7 +60,6 @@ The geometry of the discharge sluice is defined by dividing it into slices in th
    17
 
 .. image:: ../images/slices_Bath.png
-*Areas shaded in grey have a ceiling.
 
 Then, every slice needs to be defined by an identification number, x-location [m], bottom level [m] and profile number. The identification numbers should be in chronological order, moving from the upstream to the downstream direction. The x-location allows you to define the location of each slice along the waterway with respect to a (user-defined) reference location, and the bed level gives a reference height for the profiles that describe the geometry of the slice in-between two x-locations. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.
 

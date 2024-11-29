@@ -1,265 +1,264 @@
-**###########################################################
-**Date		: 01-10-2024                                
-**Filename	: bath.in                                
-**Sluice	: Bathse Spuisluis                      	
-**Configuration : |X|X|O|X|X|X|
-**
-**Input file for program SPUIS version 4.01, March 1995.	
-**Calculation of discharge relations of discharge sluices.
-**
-**Remark : Lines starting with '**' are for comments. 		
-**###########################################################
-**
-**
-**  BOUNDARY CONDITIONS
-**
-**  Calculation method        		bm  [-]
-**  0 = method backwater curves
-**  1 = method Bernoulli/momentum equation
-**
-1
-**
-**  Number of runs               	nr  [-]
-**  Minimum 1, maximum 100.
-**
-9
-**
-**  FOR EACH RUN:
-**
-**  downstream water level         	wsbe  [m]
-**  flow rate	                    qt    [m3/s]
-**
-**  Column 1	Column 2
-**  wsbe		qt
-**
--0.10 5
--0.15 12.5
--0.20 22
--0.30 29
--0.40 32
--0.50 34
--0.60 35
--0.80 45
--1.00 48
-**
-**
-**  GEOMETRY OF SLUICE
-**
-**  The geometrie of the sluice is defined by slices in the
-**	longitudinal direction of the sluice. The relevant slices
-**	need to be defined here.
-**
-**
-**  EXAMPLE top view of sluice:			+++++++++++++++++++++
-**                                              +
-**  ++++++++++++++++++++++++++                  +
-**                           ++++++++++++++++++++
-**                           |||||||||
-**  |-------------------------------------------------------------------> X
-**                           |||||||||
-**                           ++++++++++++++++++++
-**  ++++++++++++++++++++++++++                  +
-**                           ^         ^      ^ +
-**   ^                    ^  |         |      | +++++++++++++++++++++
-**   |                    |  |         |      |  ^                 ^
-**   |                    |  |         |      |  |                 |
-**   |                    |  |         |      |  |                 |
-**   1  <----slices---->  2  3         4      5  6                 7
-**
-**
-**  A slice defines a change in lateral profile and a section
-**	of the sluice for which a discharge relation exists.
-**	Define number of slices minimum 2, maximum 50.
-**
-**  Number of slices				nx  [-]
-**
-17
-**
-**  FOR EVERY SLICE:
-**
-**  slice number					id  [-]
-**  X-distance						xd  [m]
-**  Bottom level					zb  [m]
-**  Profile number					pn  [-]
-**
-**  Define slices with increasing number!
-**
-**  Column 1	Column 2	Column 3		Column 4
-**  id-number	X-distance	Bottom level	Profile number
-**  id			xd			zb				pn
-**
-1 -250.0 -7.0 1
-2 -130.0 -7.0 1
-3 -30.0 -7.0 2
-4 0.0 -6.0 3
-5 5.0 -4.25 4
-6 5.1 -5.00 5
-7 29.9 -5.00 5
-8 30.0 -5.35 13
-9 61.9 -5.35 6
-10 62.0 -6.00 7
-11 65.0 -6.00 8
-12 86.55 -6.00 14
-13 86.65 -3.50 9
-14 87.00 -8.00 10
-15 102.00 -8.00 11
-16 187.0 -8.00 12
-17 270.0 -8.00 12
-**
-**
-**  FOR EVERY SLUICE SECTION:
-**
-**	A section of the sluice is the part between 2 slices.
-**	There are nx-1 sections.
-**
-**  Discharge relation				ar  [-]
-**  Only use discharge relation 0 (backwater curve).
-**
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-**
-**
-**  DESCRIPTION PROFILES
-**
-**	The geometry of a slice is described using a profile.
-**	Define number of profiles minimum 2, maximum 20.
-**
-**  Number of profiles				np  [-]
-**
-14
-**
-**  FOR EVERY PROFILE:
-**
-**	A profile has an identification number (profile number).
-**	The number of corner points (y-values) has to be entered 
-**	for every profile. At minimum 2 and maximum 20.
-**	The roughness has to be entered for every profile, this
-**	then holds for the entire profile. The roughness is defined
-**	as a Nikuradse k-value. For every corner point a height
-**	level relative to the bottom level has to be entered (>0).
-**	For every corner point of every profile a width of the 
-**	water surface has to be entered. For every corner point the
-**	wet perimeter (for a water level at this level) has to be 
-**	entered.
-**
-**	Order for every profile:
-**	1 row with 3 number
-**		profile number				ip  [-]
-**		number of points			ny  [-]
-**		roughness					rb  [m]
-**  ny rows with 3 number
-**     level of each point			dp  [m]
-**     width at each point			bp  [m]
-**     wet perimeter at each point	op  [m]
-**
-**
-**	Enter the profile in increasing order!
-**
-**  profile 1 (upstream canal, sandy bed)
-**
- 1 7 0.01
- 0.00 0.00 0.00
- 0.01 65.00 65.00
- 1.00 73.00 73.25
- 6.50 117.00 118.60 
- 6.51 127.00 128.60
- 7.50 133.00 134.92
- 7.51 143.00 144.92
-**
-**
-**  profile 2 (upstream canal, riprap bed protection)
-**
- 2 3 0.6
- 0.00 0.00 0.00 
- 0.01 55.00 55.00
- 7.00 111.00 122.72
-**
-**
-**  profile 3 (pillars upstream side, loss coefficient C=0.59)
-**
- 3 3 0.6
- 0.00 0.00 0.00 
- 0.01 2.80 1.65
- 6.50 2.80 9.32
-**
-**
-**  profile 4 (sill at the start of the culvert)
-**
- 4 4 0.002
- 0.00 0.00 0.00 
- 0.01 2.80 2.80
- 4.75 2.80 12.30
- 4.76 0.00 15.10
-**
-**
-**  profile 5 (culvert, first chamber)
-**
- 5 4 0.002
- 0.00 0.00 0.00 
- 0.01 2.80 2.80
- 5.50 2.80 13.80
- 5.51 0.00 16.60
-**
-**  profile 6 (culvert, second chamber)
-**
- 6 4 0.002
- 0.00 0.00 0.00 
- 0.01 2.80 2.80
- 5.85 2.80 14.50
- 5.86 0.00 17.30
-**
-**  profile 7 (pillars on downstream side, loss coefficient C=0.65)
-**
- 7 3 0.002
- 0.00 0.00 0.00 
- 0.01 2.80 2.80
- 6.50 2.80 15.80
-**
-**  profile 8 (narrow part of stilling basin)
-**
- 8 3 0.002
- 0.00 0.00 0.00 
- 0.01 25.00 25.00
- 7.00 25.00 39.00
-**
-**  profile 9 (zigzag energy dissipator)
-**
- 9 3 0.002
- 0.00 0.00 0.00 
- 0.01 43.52 87.04
- 4.50 43.52 96.04
-**
-**  profile 10 (downstream canal, concrete baffles)
-**
- 10 3 0.002
- 0.00 0.00 0.00 
- 0.01 57.00 57.00
- 11.00 145.00 147.71
-**
-**  profile 11 (downstream canal, riprap bed protection)
-**
- 11 3 0.6
- 0.00 0.00 0.00 
- 0.01 57.00 57.00
- 11.00 145.00 147.71
-**
-**  profile 12 (downstream canal, sandy bed)
-**
- 12 3 0.01
- 0.00 0.00 0.00 
- 0.01 57.00 57.00
- 11.00 145.00 147.71
-**
-**  profile 13 (culvert, at rabbets, loss coefficient C = 0.76)
-**
- 13 4 0.002
- 0.00 0.00 0.00 
- 0.01 2.80 2.128
- 5.85 2.80 10.49
- 5.86 0.00 12.62
-**
-**  profile 14 (widest part of stilling basin)
-**
- 14 3 0.002
- 0.00 0.00 0.00 
- 0.01 43.52 43.52
- 7.00 43.52 57.52
+    **###########################################################
+    **Date		: 01-11-2024                                
+    **Filename	: tutorial.in                                
+    **Sluice	: Bathse Spuisluis                      	
+    **
+    **Input file for program SPUIS version 4.02, July 2024.	
+    **Calculation of discharge relations of discharge sluices.
+    **
+    **Remark : Lines starting with '**' are for comments. 		
+    **###########################################################
+    **
+    **
+    **  BOUNDARY CONDITIONS
+    **
+    **  Calculation method        		bm  [-]
+    **  0 = method backwater curves
+    **  1 = method Bernoulli/momentum equation
+    **
+    1
+    **
+    **  Number of runs               	nr  [-]
+    **  Minimum 1, maximum 100.
+    **
+    9
+    **
+    **  FOR EACH RUN:
+    **
+    **  downstream water level         	wsbe  [m]
+    **  flow rate	                    qt    [m3/s]
+    **
+    **  Column 1	Column 2
+    **  wsbe		qt
+    **
+    -0.10 5
+    -0.15 12.5
+    -0.20 22
+    -0.30 29
+    -0.40 32
+    -0.50 34
+    -0.60 35
+    -0.80 45
+    -1.00 48
+    **
+    **
+    **  GEOMETRY OF SLUICE
+    **
+    **  The geometry of the sluice is defined by slices in the
+    **	longitudinal direction of the sluice. The relevant slices
+    **	need to be defined here.
+    **
+    **
+    **  EXAMPLE top view of sluice:			           +++++++++++++++++++++
+    **                                              +
+    **  ++++++++++++++++++++++++++                  +
+    **                           ++++++++++++++++++++
+    **                           |||||||||
+    **  |-------------------------------------------------------------------> X
+    **                           |||||||||
+    **                           ++++++++++++++++++++
+    **  ++++++++++++++++++++++++++                  +
+    **                           ^         ^      ^ +
+    **   ^                    ^  |         |      | +++++++++++++++++++++
+    **   |                    |  |         |      |  ^                 ^
+    **   |                    |  |         |      |  |                 |
+    **   |                    |  |         |      |  |                 |
+    **   1  <----slices---->  2  3         4      5  6                 7
+    **
+    **
+    **  A slice defines a change in lateral profile and a section
+    **	of the sluice for which a discharge relation exists.
+    **	Define number of slices minimum 2, maximum 50.
+    **
+    **  Number of slices				nx  [-]
+    **
+    17
+    **
+    **  FOR EVERY SLICE:
+    **
+    **  slice number					id  [-]
+    **  X-distance						xd  [m]
+    **  Bottom level					zb  [m]
+    **  Profile number					pn  [-]
+    **
+    **  Define slices with increasing number!
+    **
+    **  Column 1	Column 2	Column 3		Column 4
+    **  id-number	X-distance	Bottom level	Profile number
+    **  id			xd			zb				pn
+    **
+    1 -250.0 -7.0 1
+    2 -130.0 -7.0 1
+    3 -30.0 -7.0 2
+    4 0.0 -6.0 3
+    5 5.0 -4.25 4
+    6 5.1 -5.00 5
+    7 29.9 -5.00 5
+    8 30.0 -5.35 13
+    9 61.9 -5.35 6
+    10 62.0 -6.00 7
+    11 65.0 -6.00 8
+    12 86.55 -6.00 14
+    13 86.65 -3.50 9
+    14 87.00 -8.00 10
+    15 102.00 -8.00 11
+    16 187.0 -8.00 12
+    17 270.0 -8.00 12
+    **
+    **
+    **  FOR EVERY SLUICE SECTION:
+    **
+    **	A section of the sluice is the part between 2 slices.
+    **	There are nx-1 sections.
+    **
+    **  Discharge relation				ar  [-]
+    **  No longer serves a purpose as of SPUIS 4.01 - use discharge relation 0 (nx-1) times.
+    **
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    **
+    **
+    **  DESCRIPTION PROFILES
+    **
+    **	The geometry of a slice is described using a profile.
+    **	Define number of profiles minimum 2, maximum 20.
+    **
+    **  Number of profiles				np  [-]
+    **
+    14
+    **
+    **  FOR EVERY PROFILE:
+    **
+    **	A profile has an identification number (profile number).
+    **	The number of corner points (y-values) has to be entered 
+    **	for every profile. At minimum 2 and maximum 20.
+    **	The roughness has to be entered for every profile, this
+    **	then holds for the entire profile. The roughness is defined
+    **	as a Nikuradse k-value. For every corner point a height
+    **	level relative to the bottom level has to be entered (>0).
+    **	For every corner point of every profile a width of the 
+    **	water surface has to be entered. For every corner point the
+    **	wet perimeter (for a water level at this level) has to be 
+    **	entered.
+    **
+    **	Order for every profile:
+    **	1 row with 3 number
+    **		profile number				ip  [-]
+    **		number of points			ny  [-]
+    **		roughness					rb  [m]
+    **  ny rows with 3 number
+    **     level of each point			dp  [m]
+    **     width at each point			bp  [m]
+    **     wet perimeter at each point	op  [m]
+    **
+    **
+    **	Enter the profile in increasing order!
+    **
+    **  profile 1 (upstream canal with sandy bed)
+    **
+     1 7 0.01
+     0.00 0.00 0.00
+     0.01 65.00 65.00
+     1.00 73.00 73.25
+     6.50 117.00 118.60 
+     6.51 127.00 128.60
+     7.50 133.00 134.92
+     7.51 143.00 144.92
+    **
+    **
+    **  profile 2 (bed protection in upstream canal)
+    **
+     2 3 0.6
+     0.00 0.00 0.00 
+     0.01 55.00 55.00
+     7.00 111.00 122.72
+    **
+    **
+    **  profile 3 (pillars in front of culverts, C=0.59)
+    **
+     3 3 0.6
+     0.00 0.00 0.00 
+     0.01 2.80 1.65
+     6.50 2.80 9.32
+    **
+    **
+    **  profile 4 (sill in culverts)
+    **
+     4 4 0.002
+     0.00 0.00 0.00 
+     0.01 2.80 2.80
+     4.75 2.80 12.30
+     4.76 0.00 15.10
+    **
+    **
+    **  profile 5 (culverts, before gate)
+    **
+     5 4 0.002
+     0.00 0.00 0.00 
+     0.01 2.80 2.80
+     5.50 2.80 13.80
+     5.51 0.00 16.60
+    **
+    **  profile 6 (culverts, after gate)
+    **
+     6 4 0.002
+     0.00 0.00 0.00 
+     0.01 2.80 2.80
+     5.85 2.80 14.50
+     5.86 0.00 17.30
+    **
+    **  profile 7 (pillars behind culverts, C=0.65)
+    **
+     7 3 0.002
+     0.00 0.00 0.00 
+     0.01 2.80 2.80
+     6.50 2.80 15.80
+    **
+    **  profile 8 (stilling basin, near culverts)
+    **
+     8 3 0.002
+     0.00 0.00 0.00 
+     0.01 25.00 25.00
+     7.00 25.00 39.00
+    **
+    **  profile 9 (zigzag energy dissipator)
+    **
+     9 3 0.002
+     0.00 0.00 0.00 
+     0.01 43.52 87.04
+     4.50 43.52 96.04
+    **
+    **  profile 10 (concrete blocks - bed protection)
+    **
+     10 3 0.002
+     0.00 0.00 0.00 
+     0.01 57.00 57.00
+     11.00 145.00 147.71
+    **
+    **  profile 11 (riprap - bed protection)
+    **
+     11 3 0.6
+     0.00 0.00 0.00 
+     0.01 57.00 57.00
+     11.00 145.00 147.71
+    **
+    **  profile 12 (outflow channel)
+    **
+     12 3 0.01
+     0.00 0.00 0.00 
+     0.01 57.00 57.00
+     11.00 145.00 147.71
+    **
+    **  profile 13 (culverts near rebates and gate recess, C = 0.76)
+    **
+     13 4 0.002
+     0.00 0.00 0.00 
+     0.01 2.80 2.128
+     5.85 2.80 10.49
+     5.86 0.00 12.62
+    **
+    **  profile 14 (stilling basin, near zigzag dissipator)
+    **
+     14 3 0.002
+     0.00 0.00 0.00 
+     0.01 43.52 43.52
+     7.00 43.52 57.52

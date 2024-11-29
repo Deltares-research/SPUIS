@@ -11,7 +11,7 @@ This example demonstrates the results of SPUIS4.01 by applying it to an as-built
 
 .. image:: ../images/schematisatie_Bath.png
 
-To capture the geometry of discharge sluice Bath, seventeen slices were defined. The tutorial page explains how this schematization was set up.
+To capture the geometry of discharge sluice Bath, seventeen slices were defined. The `Tutorial <https://spuis.readthedocs.io/en/latest/tutorial.html>`_ page explains how this schematization was set up.
 
 .. image:: ../images/all_slices.png
 *Areas shaded in grey have a ceiling.

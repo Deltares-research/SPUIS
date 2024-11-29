@@ -59,7 +59,7 @@ The geometry of the discharge sluice is defined by dividing it into slices in th
    **
    17
 
-.. image:: ../images/all_slices.png
+.. image:: ../images/slices_Bath.png
 *Areas shaded in grey have a ceiling.
 
 Then, every slice needs to be defined by an identification number, x-location [m], bottom level [m] and profile number. The identification numbers should be in chronological order, moving from the upstream to the downstream direction. The x-location allows you to define the location of each slice along the waterway with respect to a (user-defined) reference location, and the bed level gives a reference height for the profiles that describe the geometry of the slice in-between two x-locations. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.

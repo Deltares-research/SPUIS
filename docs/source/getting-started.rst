@@ -33,7 +33,7 @@ Three output files with raw data will be generated. Files with extension ``.uin`
 
 The ``.uws`` files with detailed information are used to generate 4 subfigures for each run with some additional details of the in- and output of the simulation. An example of such a figure is shown below for the first run in a series of 10 runs. The details of the first run (discharge, water levels, head difference and energy height) are shown in the bottom left corner. The figure of the discharge relationship in the bottom right corner shows the result for all 10 runs and highlights the current run on which the other subfigures are based. 
 
-.. image:: ../images/bath_uws_01of10.png
+.. image:: ../images/bath_uws_04of9.png
 
 After the calculations are finished, a final prompt will request the cross-sectional area of the discharge sluice:
 

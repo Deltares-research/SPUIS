@@ -4,6 +4,7 @@ Tutorial
 This tutorial will guide you through the steps required to set up a SPUIS schematization and to create an input (``.in``) file, using discharge sluice Bath as an example. The result of the full schematization is shown in the `Example <https://spuis.readthedocs.io/en/latest/examples.html>`_ chapter, and the steps to use your input file to run a SPUIS simulation are explained in the `Getting Started <https://spuis.readthedocs.io/en/latest/getting-started.html>`_ chapter of the documentation. 
 
 An input file that describes the schematization of the discharge sluice consists of roughly three sections: 
+
 * Boundary conditions: calculation method and a combination of discharge and downstream water level for each model run
 * Slices: divide the discharge sluice into slices that capture changes in the lateral profile of the discharge sluice
 * Profiles: define profiles that describe the geometry of the slices
@@ -162,11 +163,12 @@ In case of losses due to (sudden) widening or narrowing, or the presence of reba
    **
 
 Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the hydraulic losses are:
-* “Internal flow systems” by D.S. Miller (1978).
-* “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idelchik (1960).
-* “Open-Channel Hydraulics” by V.T. Chow (1985).
-* “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989).
-* “Open-Channel Hydraulics” by R.H. French (1994).
+
+* “Internal flow systems” by D.S. Miller (1978)
+* “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idelchik (1960)
+* “Open-Channel Hydraulics” by V.T. Chow (1985)
+* “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
+* “Open-Channel Hydraulics” by R.H. French (1994)
 
 Creating the input file
 --------------------------------

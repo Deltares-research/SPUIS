@@ -30,6 +30,7 @@ where ``Y`` will save all figures to the input folder directly, and ``N`` will s
 where ``Y`` will open up your file explorer and allow you to choose a single input (``.in``) file, and ``N`` will allow you to select a folder with multiple input files that will then run consecutively.
 
 Three output files with raw data will be generated:
+
 * ``.uin``: Repeats the input (restructured from ``.in`` file), followed by detailed information about each run (i.e. each set of a simulated discharge and downstream water level): x-location, water levels, bed levels, energy heights, Froude numbers, critical depth, velocity, wetted perimeter and flow regime.
 * ``.uws``: Contains detailed information about each run: x-location, water levels, bed levels, energy heights, Froude numbers, critical depth, velocity, wetted perimeter and flow regime.
 * ``.uqh``: A short summary with only water levels, head differences, discharge and flow regime per run.

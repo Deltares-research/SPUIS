@@ -28,6 +28,6 @@ Literature
 ----------
 * .. [1] WL | Delft Hydraulics (1982). ‘Lozingsmiddel Zoommeer. Verifikatie en aanpassing ontwerp, bepaling afvoerkarakteristieken en rekenmodel spuisluis met vrije waterspiegel.’ Report M1711/R1372.
 * .. [2] Rijkswaterstaat Directie Zeeland (1988) – Ontwerpnota compartimentswerken, deelnota 8: Bathse Spuisluis nota z.bc. 88-20.004
-* .. [3]_ Rijkswaterstaat Directie Zeeland (1988) – Ontwerpnota compartimentswerken, deelnota 3: Bathse Spuikanaal nota z.bc. 88-20.007
+* .. [3] Rijkswaterstaat Directie Zeeland (1988) – Ontwerpnota compartimentswerken, deelnota 3: Bathse Spuikanaal nota z.bc. 88-20.007
 * .. [4] Rijkswaterstaat (1988). 'Meetresultaten debietmeting Bathse Spuisluis - 17 t/m 23 juni 1988.'
 * .. [5] Landelijk Meetnet Water (LMW): `Rijkswaterstaat Waterinfo <https://waterinfo.rws.nl/#/publiek/waterafvoer>`_

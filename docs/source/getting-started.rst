@@ -29,9 +29,13 @@ where ``Y`` will save all figures to the input folder directly, and ``N`` will s
 
 where ``Y`` will open up your file explorer and allow you to choose a single input (``.in``) file, and ``N`` will allow you to select a folder with multiple input files that will then run consecutively.
 
-Three output files with raw data will be generated. Files with extension ``.uin`` repeat the input (restructured from ``.in`` file), followed by detailed information about each run (each set of a discharge and downstream water level): x-location, water levels, bed levels, energy heights, Froude numbers, boundary layer depth, velocity, wetted perimeter and flow regime. Files with extension ``.uws`` only contains the detailed information about each run (without repetition of the input file), and ``.uqh`` files show a short summary with only water levels, head differences, discharge and flow regime per run.
+Three output files with raw data will be generated:
 
-The ``.uws`` files with detailed information are used to generate 4 subfigures for each run with some additional details of the in- and output of the simulation. An example of such a figure is shown below for the first run in a series of 10 runs. The details of the first run (discharge, water levels, head difference and energy height) are shown in the bottom left corner. The figure of the discharge relationship in the bottom right corner shows the result for all 10 runs and highlights the current run on which the other subfigures are based. 
+* ``.uin``: Repeats the input (restructured from ``.in`` file), followed by detailed information about each run (i.e. each set of a simulated discharge and downstream water level): x-location, water levels, bed levels, energy heights, Froude numbers, critical depth, velocity, wetted perimeter and flow regime.
+* ``.uws``: Contains detailed information about each run: x-location, water levels, bed levels, energy heights, Froude numbers, critical depth, velocity, wetted perimeter and flow regime.
+* ``.uqh``: A short summary with only water levels, head differences, discharge and flow regime per run.
+
+The ``.uws`` file is used to automatically generate 4 subfigures for each run. An example of such a figure is shown below for the fourth run in a series of nine runs. The details of the fourth run (discharge, water levels, head difference and energy height) are shown in the bottom left corner. The figure of the discharge relationship in the bottom right corner shows the result for all nine runs and highlights the current run (red dot) on which the other subfigures are based.
 
 .. image:: ../images/bath_uws_04of9.png
 

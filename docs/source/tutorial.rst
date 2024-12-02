@@ -146,7 +146,7 @@ The next example profile is a single square culvert of discharge sluice Bath. We
     5.51	0.00	16.6
    **
 
-In case of losses due to (sudden) widening or narrowing, or the presence of rebates or other irregularities, the wetted perimeter must be corrected by multiplying it with a contraction coefficient. The final example is the same as the previous example in terms of geometry, but due to the presence of rebates in the culverts we should take into account the hydraulic losses. The loss coefficient for this part of discharge sluice Bath was calculated during scale model experiments in 1982 [1]: :math:`\xi` = 0.10. This means that the contraction coefficient is equal to :math:`C_{c}` = 0.76. We must now multiply the wetted perimeter at each :math:`y`-location by 0.76:
+In case of losses due to (sudden) widening or narrowing, or the presence of rebates or other irregularities, the wetted perimeter must be corrected by multiplying it with a contraction coefficient. The final example is the same as the previous example in terms of geometry, but due to the presence of rebates in the culverts we should take into account the hydraulic losses. The loss coefficient for this part of discharge sluice Bath was calculated during scale model experiments in 1982 [1]_: :math:`\xi` = 0.10. This means that the contraction coefficient is equal to :math:`C_{c}` = 0.76. We must now multiply the wetted perimeter at each :math:`y`-location by 0.76:
 
 .. image:: ../images/sketch_profile3.png
 
@@ -179,4 +179,4 @@ The input file (``.in``) can now be created. The standard format for input files
 
 Literature
 -----------
-* [1] WL | Delft Hydraulics (1982). ‘Lozingsmiddel Zoommeer. Verifikatie en aanpassing ontwerp, bepaling afvoerkarakteristieken en rekenmodel spuisluis met vrije waterspiegel.’ Report M1711/R1372.
+.. [1] WL | Delft Hydraulics (1982). ‘Lozingsmiddel Zoommeer. Verifikatie en aanpassing ontwerp, bepaling afvoerkarakteristieken en rekenmodel spuisluis met vrije waterspiegel.’ Report M1711/R1372.

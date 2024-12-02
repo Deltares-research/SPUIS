@@ -26,6 +26,5 @@ The input file for the schematization of one of Bathse Spuisluis' culverts is sh
 
 Literature
 ----------
-
-[1] Rijkswaterstaat (1988). 'Meetresultaten debietmeting Bathse Spuisluis - 17 t/m 23 juni 1988.'
-[2] Landelijk Meetnet Water (LMW): `Rijkswaterstaat Waterinfo <https://waterinfo.rws.nl/#/publiek/waterafvoer>`_
+* [1] Rijkswaterstaat (1988). 'Meetresultaten debietmeting Bathse Spuisluis - 17 t/m 23 juni 1988.'
+* [2] Landelijk Meetnet Water (LMW): `Rijkswaterstaat Waterinfo <https://waterinfo.rws.nl/#/publiek/waterafvoer>`_

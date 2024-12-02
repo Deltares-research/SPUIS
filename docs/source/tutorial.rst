@@ -172,7 +172,7 @@ Losses due to widening, narrowing or the presence of rebates or other irregulari
 
 Creating the input file
 --------------------------------
-The input file (``.in``) can now be created. The standard format for input files contains comments (``**``) to help the user with the set-up. A completed input file for discharge sluice Bath, that includes the examples above as profiles 1, 5 and 13, is shown here. This file can be copied and re-used to create your own schematization.
+The input file (``.in``) can now be created. The standard format for input files contains comments (``**``) to help the user with the set-up. A completed input file for discharge sluice Bath, that includes the examples above as profiles 1, 5 and 13, is shown here. The result of the full schematization is shown in the `Example <https://spuis.readthedocs.io/en/latest/examples.html>`_ chapter. The input file below can be copied and re-used to create your own schematization.
 
 .. code-block:: none
 

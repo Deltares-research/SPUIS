@@ -1,12 +1,12 @@
 Tutorial
 ===========
 
-This tutorial will guide you through the steps required to set up a SPUIS schematization and to create an input (``.in``) file. The steps to use your input file to run a SPUIS simulation are explained in the `getting started <https://spuis.readthedocs.io/en/latest/getting-started.html>`_ chapter of the documentation. 
+This tutorial will guide you through the steps required to set up a SPUIS schematization and to create an input (``.in``) file, using discharge sluice Bath as an example. The result of the full schematization is shown in the `Example <https://spuis.readthedocs.io/en/latest/examples.html>`_ chapter, and the steps to use your input file to run a SPUIS simulation are explained in the `Getting Started <https://spuis.readthedocs.io/en/latest/getting-started.html>`_ chapter of the documentation. 
 
 An input file that describes the schematization of the discharge sluice consists of roughly three sections: 
-1.	Boundary conditions: calculation method and a combination of discharge and downstream water level for each model run
-2.	Slices: divide the discharge sluice into slices that capture changes in the lateral profile of the discharge sluice
-3.	Profiles: define profiles that describe the geometry of the slices
+* Boundary conditions: calculation method and a combination of discharge and downstream water level for each model run
+* Slices: divide the discharge sluice into slices that capture changes in the lateral profile of the discharge sluice
+* Profiles: define profiles that describe the geometry of the slices
 
 Defining the boundary conditions
 --------------------------------
@@ -108,11 +108,11 @@ The geometry of each slice of the discharge sluice is described using a profile.
 
 Each profile follows the same structure. The first line consists of ``profile number`` ``number of y-values`` ``roughness``. This line is then followed by as many lines as indicated in ``number of y-values``. Each of these lines indicates the ``y-value`` ``width at y-value`` ``wet perimeter at y-value``. Each profile must be defined by a minimum of 2 and a maximum of 20 :math:`y`-values.
 
-Let's first create an example profile for a canal with sloped sides. We will define the profile at three y-locations and assume that the roughness length of its sandy bed is :math:`k_{s}` = 0.01 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` (indicated in blue and orange, respectively) are defined. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
+Let's first create an example profile for the upstream canal with sloped sides. We will define the profile at seven y-locations and assume that the roughness length of its sandy bed is :math:`k_{s}` = 0.01 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` (indicated in blue and orange, respectively) are defined for the first three y-locations. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
 
 .. image:: ../images/sketch_profile1.png
 
-Since the width of the canal at this location varies a lot with height, the width and wetted perimeter are described at a total of 7 :math:`y`-values for this profile:
+Since the width of the canal at this location varies a lot with height, the width and wetted perimeter are described at a total of seven :math:`y`-values for this profile:
 
 .. code-block:: none
 
@@ -129,7 +129,7 @@ Since the width of the canal at this location varies a lot with height, the widt
  7.51 143.00 144.92
    **
 
-The next example profile is a single square culvert. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is :math:`k_{s}` = 0.002 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wetted perimeter at this y-location is not zero, as the ceiling is now included in the total wetted perimeter. SPUIS cannot split into two or more parallel culverts. In that case, the culverts need to be schematized as a single wider culvert for the width, but for the wetted perimeter each wall needs to be taken into account in the total perimeter to ensure that the wall friction is calculated correctly by SPUIS.
+The next example profile is a single square culvert of discharge sluice Bath. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is :math:`k_{s}` = 0.002 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wetted perimeter at this y-location is not zero, as the ceiling is now included in the total wetted perimeter. SPUIS cannot split into two or more parallel culverts. In that case, the culverts need to be schematized as a single wider culvert for the width, but for the wetted perimeter each wall needs to be taken into account in the total perimeter to ensure that the wall friction is calculated correctly by SPUIS.
 
 .. image:: ../images/sketch_profile2.png
 
@@ -162,11 +162,11 @@ In case of losses due to (sudden) widening or narrowing, or the presence of reba
    **
 
 Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the hydraulic losses are:
-* “Internal flow systems” by D.S. Miller (1978)
-* “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idelchik (1960)
-* “Open-Channel Hydraulics” by V.T. Chow (1985)
-* “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
-* “Open-Channel Hydraulics” by R.H. French (1994)
+* “Internal flow systems” by D.S. Miller (1978).
+* “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idelchik (1960).
+* “Open-Channel Hydraulics” by V.T. Chow (1985).
+* “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989).
+* “Open-Channel Hydraulics” by R.H. French (1994).
 
 Creating the input file
 --------------------------------

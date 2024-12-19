@@ -52,7 +52,7 @@ The next section of the input file requires the definition of the amount of runs
 
 Defining the slices
 -------------------
-The geometry of the discharge sluice is defined by dividing it into slices in the longitudinal direction of the sluice. All changes in the lateral profile should be captured by a slice. The entire geometry can be defined using a minimum of 2 and a maximum of 50 slices. The first entry is the number of slices used to schematize the discharge sluice. We need seventeen slices to capture the geometry of discharge sluice Bath (areas shaded in grey have a ceiling):
+The geometry of the discharge sluice is defined by dividing it into sections in the longitudinal direction of the sluice. All changes in the lateral profile should be captured by a slice. The entire geometry can be defined using a minimum of 2 and a maximum of 50 slices. The first entry is the number of slices used to schematize the discharge sluice. We need seventeen slices to capture the geometry of discharge sluice Bath (areas shaded in grey have a ceiling):
 
 .. code-block:: none
    
@@ -62,7 +62,7 @@ The geometry of the discharge sluice is defined by dividing it into slices in th
 
 .. image:: ../images/slices_Bath.png
 
-Then, every slice needs to be defined by an identification number, x-location [m], bottom level [m] and profile number. The identification numbers should be in chronological order, moving from the upstream to the downstream direction. The x-location allows you to define the location of each slice along the waterway with respect to a (user-defined) reference location, and the bed level gives a reference height for the profiles that describe the geometry of the slice in-between two x-locations. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.
+Then, every slice needs to be defined by an identification number, x-location [m], bed level [m] and profile number. The identification numbers should be in ascending order, moving from the upstream to the downstream direction. The x-location allows you to define the location of each slice along the waterway with respect to a (user-defined) reference location, and the bed level gives a reference height for the profile that describes the geometry of the slice in-between two x-locations. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.
 
 .. code-block:: none
 
@@ -120,17 +120,16 @@ Since the width of the canal at this location varies a lot with height, the widt
    **
    **  profile 1: upstream canal with sandy bed
    **
- 1 7 0.01
+ 1 6 0.01
  0.00 0.00 0.00
  0.01 65.00 65.00
- 1.00 73.00 73.25
  6.50 117.00 118.60 
  6.51 127.00 128.60
  7.50 133.00 134.92
  7.51 143.00 144.92
    **
 
-The next example profile is a single square culvert of discharge sluice Bath. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is :math:`k_{s}` = 0.002 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The wetted perimeter at this y-location is not zero, as the ceiling is now included in the total wetted perimeter. SPUIS cannot split into two or more parallel culverts. In that case, the culverts need to be schematized as a single wider culvert for the width, but for the wetted perimeter each wall needs to be taken into account in the total perimeter to ensure that the wall friction is calculated correctly by SPUIS.
+The next example profile is a single square culvert of discharge sluice Bath. We will define the profile at four y-locations and assume that the roughness length of the smooth concrete is :math:`k_{s}` = 0.002 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` are defined in this case. Contrary to the canal with a free surface in the previous example, the final y-value of the description of the culverts has a width of zero, indicating the location of the ceiling. The ceiling is included in the total wetted perimeter. SPUIS cannot distinguish two or more parallel culverts. In that case, the culverts need to be modelled as a single wider culvert for the width, but for the wetted perimeter each wall needs to be taken into account in the total perimeter to ensure that the wall friction is calculated correctly by SPUIS.
 
 .. image:: ../images/sketch_profile2.png
 
@@ -162,13 +161,26 @@ In case of losses due to (sudden) widening or narrowing, or the presence of reba
     5.51	0.00	12.6
    **
 
-Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the hydraulic losses are:
+Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the loss coefficients :math:`\xi` and contraction coefficients :math:`C_{c}` are:
 
 * “Internal flow systems” by D.S. Miller (1978)
 * “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idelchik (1960)
 * “Open-Channel Hydraulics” by V.T. Chow (1985)
 * “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
 * “Open-Channel Hydraulics” by R.H. French (1994)
+
+The final example profile describes the zig-zag energy dissipator on the downstream side of discharge sluice Bath. The discharge coefficient of the dissipator :math:`\mu` is equal to 0.7. Similarly to the contraction coefficient in the previous example, the width and wetted perimeter of the profile is multiplied by :math:`\mu` to take the losses into account. 
+
+.. code-block:: none
+
+**
+** profile 9 (zigzag energy dissipator, mu = 0.7)
+**
+9 3 0.002
+0.00 0.00 0.00
+0.01 43.52 60.93
+4.50 43.52 67.23
+**
 
 Creating the input file
 --------------------------------

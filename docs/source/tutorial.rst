@@ -62,7 +62,7 @@ The geometry of the discharge sluice is defined by dividing it into sections in 
 
 .. image:: ../images/slices_Bath.png
 
-Then, every slice needs to be defined by an identification number, x-location [m], bed level [m] and profile number. The identification numbers should be in ascending order, moving from the upstream to the downstream direction. The x-location allows you to define the location of each slice along the waterway with respect to a (user-defined) reference location, and the bed level gives a reference height for the profile that describes the geometry of the slice in-between two x-locations. A single profile may be used on multiple slices. In the next section we will define three different profiles, which all have been assigned to one or more of the slices below.
+Then, every slice needs to be defined by an identification number, x-location [m], bed level [m] and profile number. The identification numbers should be in ascending order, moving from the upstream to the downstream direction. The x-location allows you to define the location of each slice along the waterway with respect to a (user-defined) reference location, and the bed level gives a reference height for the profile that describes the geometry of the slice in-between two x-locations. A single profile may be used on multiple slices. In the next section we will define four different profiles, which all have been assigned to one or more of the slices below.
 
 .. code-block:: none
 
@@ -109,11 +109,11 @@ The geometry of each slice of the discharge sluice is described using a profile.
 
 Each profile follows the same structure. The first line consists of ``profile number`` ``number of y-values`` ``roughness``. This line is then followed by as many lines as indicated in ``number of y-values``. Each of these lines indicates the ``y-value`` ``width at y-value`` ``wet perimeter at y-value``. Each profile must be defined by a minimum of 2 and a maximum of 20 :math:`y`-values.
 
-Let's first create an example profile for the upstream canal with sloped sides. We will define the profile at seven y-locations and assume that the roughness length of its sandy bed is :math:`k_{s}` = 0.01 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` (indicated in blue and orange, respectively) are defined for the first three y-locations. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
+Let's first create an example profile for the upstream canal with sloped sides. We will define the profile at six y-locations and assume that the roughness length of its sandy bed is :math:`k_{s}` = 0.01 m. The sketch below shows how the width ``W`` and wetted perimeter ``P`` (indicated in blue and orange, respectively) are defined for the first three y-locations. The first y-value of the description is always zero, as it refers to the reference bed level that was defined in the previous section.
 
 .. image:: ../images/sketch_profile1.png
 
-Since the width of the canal at this location varies a lot with height, the width and wetted perimeter are described at a total of seven :math:`y`-values for this profile:
+Since the width of the canal at this location varies a lot with height, the width and wetted perimeter are described at a total of six :math:`y`-values for this profile:
 
 .. code-block:: none
 
@@ -145,7 +145,7 @@ The next example profile is a single square culvert of discharge sluice Bath. We
     5.51	0.00	16.6
    **
 
-In case of losses due to (sudden) widening or narrowing, or the presence of rebates or other irregularities, the wetted perimeter must be corrected by multiplying it with a contraction coefficient. The final example is the same as the previous example in terms of geometry, but due to the presence of rebates in the culverts we should take into account the hydraulic losses. The loss coefficient for this part of discharge sluice Bath was calculated during scale model experiments in 1982 [1]_: :math:`\xi` = 0.10. This means that the contraction coefficient is equal to :math:`C_{c}` = 0.76. We must now multiply the wetted perimeter at each :math:`y`-location by 0.76:
+In case of losses due to (sudden) widening or narrowing, or the presence of rebates or other irregularities, the wetted perimeter must be corrected by multiplying it with a contraction coefficient. The final example is the same as the previous example in terms of geometry, but due to the presence of rebates in the culverts we should take into account the hydraulic losses, which effectively result in a reduced width. The loss coefficient for this part of discharge sluice Bath was calculated during scale model experiments in 1982 [1]_: :math:`\xi` = 0.10. This means that the contraction coefficient is equal to :math:`C_{c}` = 0.76. We must now multiply the wetted perimeter at each :math:`y`-location by 0.76:
 
 .. image:: ../images/sketch_profile3.png
 
@@ -161,7 +161,7 @@ In case of losses due to (sudden) widening or narrowing, or the presence of reba
     5.51	0.00	12.6
    **
 
-Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the loss coefficients :math:`\xi` and contraction coefficients :math:`C_{c}` are:
+By multiplying both the width and the wetted perimeter with the contraction coefficient, the hydraulic radius math:`R=A/P` remains unaltered. Losses due to widening, narrowing or the presence of rebates or other irregularities will be highly specific to each individual structure. Some recommended sources for calculating the loss coefficients :math:`\xi` and contraction coefficients :math:`C_{c}` are:
 
 * “Internal flow systems” by D.S. Miller (1978)
 * “Handbook of Hydraulic Resistance - Coefficients of Local Resistance and of Friction” by I.E. Idelchik (1960)
@@ -169,7 +169,9 @@ Losses due to widening, narrowing or the presence of rebates or other irregulari
 * “Discharge relations for hydraulic structures and head losses from different components” by P.A. Kolkman (WL | Delft Hydraulics, 1989)
 * “Open-Channel Hydraulics” by R.H. French (1994)
 
-The final example profile describes the zig-zag energy dissipator on the downstream side of discharge sluice Bath. The discharge coefficient of the dissipator :math:`\mu` is equal to 0.7. Similarly to the contraction coefficient in the previous example, the width and wetted perimeter of the profile is multiplied by :math:`\mu` to take the losses into account. 
+The final example profile describes the zig-zag energy dissipator on the downstream side of discharge sluice Bath. The dissipator is assumed to have a discharge coefficient :math:`\mu` = 0.7 and a ratio of :math:`L/W` = 2 between width and crest length [2]_ [3]_. Similarly to the contraction coefficient in the previous example, the width and wetted perimeter of the profile are multiplied by :math:`\mu` to take the losses into account.
+
+.. image:: ../images/sketch_profile4.png
 
 .. code-block:: none
 
@@ -178,8 +180,8 @@ The final example profile describes the zig-zag energy dissipator on the downstr
 **
 9 3 0.002
 0.00 0.00 0.00
-0.01 43.52 60.93
-4.50 43.52 67.23
+0.01 30.46	30.46
+2.50 30.46	33.96
 **
 
 Creating the input file
@@ -192,3 +194,5 @@ The input file (``.in``) can now be created. The standard format for input files
 Literature
 -----------
 .. [1] WL | Delft Hydraulics (1982). ‘Lozingsmiddel Zoommeer. Verifikatie en aanpassing ontwerp, bepaling afvoerkarakteristieken en rekenmodel spuisluis met vrije waterspiegel.’ Report M1711/R1372.
+.. [2] WL | Delft Hydraulics (1986). ‘Berekening van de afvoer van spuisluizen met behulp van een rekenmodel.’ Report R2125.
+.. [3] WL | Delft Hydraulics (1988). ‘Zigzag-overlaat als debietspreider.’ Report Q0179.

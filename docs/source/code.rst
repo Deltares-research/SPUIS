@@ -5,7 +5,7 @@ Overview of Python functions
 
 .. py:function:: runSpuis
 
-   	Reads the input files, runs SPUIS4.01, writes output files and plots the output. 
+   	Reads the input files, runs SPUIS4.02, writes output files and plots the output. 
 
 .. py:function:: SPUIS401
 
@@ -17,11 +17,11 @@ Overview of Python functions
 
 .. py:function:: benwst(id, ws, debiet, bm, dn_des, prof_des)
 
-	Calculates the downstream water level at slice with a critical cross-section.
+	Calculates the downstream water level at slices with a critical cross-section.
 
 .. py:function:: bovwst(id, ws, debiet, bm, dn_des, prof_des)
 	
-	Calculates the upstream water level at slice with at critical cross-section.
+	Calculates the upstream water level at slices with at critical cross-section.
 
 .. py:function:: brnoul(id1, id2, hw1, hw2, debiet, jfn, dn_des, prof_des)
 	
@@ -61,11 +61,11 @@ Overview of Python functions
 
 .. py:function:: minwst(id, ws, debiet, bm, dn_des, prof_des)
 	
-	Defines minimum water depth for a slice to have a critical cross-sections. 
+	Defines minimum water depth for a slice to have a critical cross-section. 
 
 .. py:function:: opperv(id, hw, dn_des, prof_des)
 
-	Calculates the wetted surface for each slice and water level.
+	Calculates the cross-sectional area for each slice and water level.
 
 .. py:function:: reknnr(id, ws, debiet, bm, dn_des, prof_des)
 	
